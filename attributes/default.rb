@@ -1,6 +1,7 @@
 
 default[:request_tracker][:server] = 'nginx'
 default[:request_tracker][:server_name] = node[:request_tracker][:domain] || node[:fqdn]
+default[:nginx][:listen_ports] = ['80', '443']
 
 default[:request_tracker][:server_port] =
   case node[:request_tracker][:server]
@@ -40,4 +41,3 @@ default[:request_tracker][:cache] = {}
 default[:request_tracker][:cache][:enable] = true
 default[:request_tracker][:cache][:key_zone] = 'main'
 default[:request_tracker][:cache][:expires] = '30d'
-

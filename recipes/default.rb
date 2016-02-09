@@ -35,6 +35,11 @@ elsif server == 'nginx'
   end
 end
 
+case node[:platform_family]
+when "debian", "ubuntu"
+  include_recipe 'apt::default'
+end
+
 packages.each do |p|
   package p do
     options package_options
@@ -55,7 +60,12 @@ template "/etc/default/rt4-fcgi" do
   notifies :restart, "service[rt4-fcgi]"
 end
 
+directory node[:request_tracker][:config_path] do
+  action :create
+end
+
 template "#{node[:request_tracker][:config_path]}/RT_SiteConfig.pm" do
+  source 'RT_SiteConfig.pm.erb'
   mode "640"
   variables node[:request_tracker]
   notifies :restart, "service[rt4-fcgi]"
@@ -90,4 +100,3 @@ elsif server == 'apache'
     enable true
   end
 end
-
