@@ -1,118 +1,37 @@
 request\_tracker Cookbook
-========================
-Install fetchmail using the system package configure
+=========================
+Install Request Tracker using the system package configure
 
 Requirements
 ------------
-Plataforms:
+Platforms:
  - Debian
  - Ubuntu
 
 Attributes
 ----------
 #### request\_tracker::default
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:install_from]</tt></td>
-    <td>Choose a custom place to install from in one of: `debian_testing`</td>
-    <td><tt>'system'</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:server]</tt></td>
-    <td>Support 'apache' and 'nginx'</td>
-    <td><tt>nginx</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:server_name]</tt></td>
-    <td></td>
-    <td><tt>node[:fqdn]</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:service_name]</tt></td>
-    <td>The filename of the service to be installed</td>
-    <td><tt>request_tracker</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:fcgi_workers]</tt></td>
-    <td>The number of fcgi workers (nginx server)</td>
-    <td><tt>1</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:name]</tt></td>
-    <td>Site name</td>
-    <td><tt>Request Tracker</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:organization]</tt></td>
-    <td>Organization name</td>
-    <td><tt>Request Tracker</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:force_language]</tt></td>
-    <td>Force a specifig language</td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:correspond_addess]</tt></td>
-    <td>Correspond email</td>
-    <td><tt>''</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:comment_addess]</tt></td>
-    <td>Comment email</td>
-    <td><tt>''</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:web_path]</tt></td>
-    <td>Web path</td>
-    <td><tt>'/rt'</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:web_url]</tt></td>
-    <td>Web URL</td>
-    <td><tt>http://#{node[:request_tracker][:domain]}</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:config]['VariableName']</tt></td>
-    <td>Extra configuration keys. All the keys in it will generate a config value on RT_SiteConfig.pm, (e.g. `Set($VariableName, "value");`) </td>
-    <td><tt>value</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:db_type]</tt></td>
-    <td>What DB (mysql, Pg, SQLite, ...)</td>
-    <td><tt>mysql</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:db_host]</tt></td>
-    <td>DB host</td>
-    <td><tt>localhost</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:db_port]</tt></td>
-    <td>DB port</td>
-    <td><tt>''</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:db_name]</tt></td>
-    <td>DB name</td>
-    <td><tt>'rt'</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:db_user]</tt></td>
-    <td>DB user</td>
-    <td><tt>'rtuser'</tt></td>
-  </tr>
-  <tr>
-    <td><tt>node[:request_tracker][:db_password]</tt></td>
-    <td>DB password</td>
-    <td><tt>''</tt></td>
-  </tr>
-</table>
+| Attribute                                         | Description                                                                                                                             | Default                                     |
+|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| `node[:request_tracker][:install_from]`           | Choose a custom place to install from in one of: \`debian\_testing\`                                                                    | `'system'`                                  |
+| `node[:request_tracker][:server]`                 | Support ‘apache’ and ‘nginx’                                                                                                            | `nginx`                                     |
+| `node[:request_tracker][:server_name]`            |                                                                                                                                         | `node[:fqdn]`                               |
+| `node[:request_tracker][:service_name]`           | The filename of the service to be installed                                                                                             | `request_tracker`                           |
+| `node[:request_tracker][:fcgi_workers]`           | The number of fcgi workers (nginx server)                                                                                               | `1`                                         |
+| `node[:request_tracker][:name]`                   | Site name                                                                                                                               | `Request Tracker`                           |
+| `node[:request_tracker][:organization]`           | Organization name                                                                                                                       | `Request Tracker`                           |
+| `node[:request_tracker][:force_language]`         | Force a specifig language                                                                                                               | `nil`                                       |
+| `node[:request_tracker][:correspond_addess]`      | Correspond email                                                                                                                        | `''`                                        |
+| `node[:request_tracker][:comment_addess]`         | Comment email                                                                                                                           | `''`                                        |
+| `node[:request_tracker][:web_path]`               | Web path                                                                                                                                | `'/rt'`                                     |
+| `node[:request_tracker][:web_url]`                | Web URL                                                                                                                                 | `http://#{node[:request_tracker][:domain]}` |
+| `node[:request_tracker][:config]['VariableName']` | Extra configuration keys. All the keys in it will generate a config value on RT\_SiteConfig.pm, (e.g. \`Set($VariableName, “value”);\`) | `value`                                     |
+| `node[:request_tracker][:db_type]`                | What DB (mysql, Pg, SQLite, …)                                                                                                          | `mysql`                                     |
+| `node[:request_tracker][:db_host]`                | DB host                                                                                                                                 | `localhost`                                 |
+| `node[:request_tracker][:db_port]`                | DB port                                                                                                                                 | `''`                                        |
+| `node[:request_tracker][:db_name]`                | DB name                                                                                                                                 | `'rt'`                                      |
+| `node[:request_tracker][:db_user]`                | DB user                                                                                                                                 | `'rtuser'`                                  |
+| `node[:request_tracker][:db_password]`            | DB password                                                                                                                             | `''`                                        |
 
 Usage
 -----
@@ -141,4 +60,4 @@ Contributing
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-After 3 consistent patches you become a commiter :)
+After 3 consistent patches you become a committer :)
